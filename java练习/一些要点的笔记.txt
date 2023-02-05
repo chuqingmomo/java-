@@ -1,0 +1,102 @@
+1.java最基本的单位是类（class）
+
+2.每一个java代码中固定格式是：
+	public class 类名（首字母大写，驼峰法）{
+		public static void main(String[] args){
+			System.out.println("要输出的内容");
+		}
+	}
+	
+3.类名要和文件名保持一致，且java非常注重代码的排版（有空格会报错），
+	除了注释和引号引起的内容，其他符号或字母都必须要在英文状态下输入
+	;分号表示一行的结束，{}大括号来括起方法体
+	
+4.方法：将一个功能抽取出来，把代码单独定义在一个大括号内，形成一个单独的功能。
+	当我们需要这个功能的时候，可以去调用，这样实现了代码的复用性，解决代码冗余的问题。
+	如果为每个运算符都单独创建一个新的类和main方法，这样编写的代码会非常繁琐，
+	重复代码过多的时候就需要使用方法来实现。
+
+5.方法的定义：
+	修饰符 返回值类型 方法名（参数列表）{
+		代码
+		return;
+	}
+	修饰符：public static的固定写法；
+	返回值类型：表示这个方法运行结果的数据类型，方法执行后将结果返回到调用者；
+	参数列表：方法在运算过程中的未知数据，调用者用方法是传递；
+	return（方法的返回值）：将方法执行后的结果带给调用者，方法执行到return，整体方法运行结束；
+	如：
+	public static void getNumber（）{}
+	
+6.方法的两个明确：
+	需求： 定义方法实现两个整数的求和计算。
+	明确返回值类型 ：方法计算的是整数的求和，结果也必然是个整数，返回值类型定义为int类型。
+	明确参数列表 ：计算哪两个整数的和，并不清楚，但可以确定是整数，参数列表可以定义两个int类型的
+	变量，由调用者调用方法时传递
+	public class Method_Demo2 {
+	public static void main(String[] args) {
+	// 调用方法getSum，传递两个整数，这里传递的实际数据又称为实际参数
+	// 并接收方法计算后的结果，返回值
+	int sum = getSum(5, 6);
+	System.out.println(sum);
+	}
+	
+	定义计算两个整数和的方法
+	返回值类型，计算结果是int
+	参数：不确定数据求和，定义int参数.参数又称为形式参数
+	public static int getSum(int a, int b) {
+		return a + b;
+	}
+	}
+	程序执行，主方法 main 调用 getSum 方法，传递了实际数据 5 和6 ，
+	两个变量 a 和b 接收到的就是实际参数，
+	并将计算后的结果返回，主方法 main 中的变量 sum 接收的就是方法的返回值。
+	
+7.方法的调用：
+	方法在定义完毕后，方法不会自己运行，必须被调用才能执行，
+	我们可以在主方法main中来调用我们自己定义好的方法。
+	在主方法中，直接写要调用的方法名字就可以调用了。
+	public static void main(String[] args) {
+	//调用定义的方法method
+		method();
+	}
+	//定义方法，被main方法调用
+	public static void method() {
+		System.out.println("自己定义的方法，需要被main调用运行");
+	}
+	
+8.方法调用的三种方法：
+	直接调用： 直接写方法名调用
+	public static void main(String[] args) {
+		print();
+	}
+	public static void print() {
+		System.out.println("方法被调用");
+	}
+
+	赋值调用： 调用方法，在方法前面定义变量，接收方法返回值
+	public static void main(String[] args) {
+		int sum = getSum(5,6);
+		System.out.println(sum);
+	}
+	public static int getSum(int a,int b) {
+		return a + b;
+	}
+
+	输出语句调用：
+	在输出语句中调用方法， System.out.println( 方法名()) 。
+	public static void main(String[] args) {
+		System.out.println(getSum(5,6));
+	}
+	public static int getSum(int a,int b) {
+		return a + b;
+	}
+	
+	不能用输出语句调用 void 类型的方法，因为方法执行后没有结果，也就打印不出任何内容。
+	public static void main(String[] args) {
+		System.out.println(printHello());
+		// 错误，不能输出语句调用void类型方法
+	}
+	public static void printHello() {
+		System.out.println("Hello");
+	}
